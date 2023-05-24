@@ -1,0 +1,18 @@
+{
+  "name": "modulo4_node_express",
+  "version": "1.0.0",
+  "description": "Proyecto con todos los retos del Módulo 4 - Node y Express del Bootcamp de Codenotch de Desarrollo Web y Móvil",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "jsdoc -c jsdoc.json"
+  },
+  "author": "Cristina Taboada Mayo",
+  "license": "ISC",
+  "dependencies": {
+    "jsdoc": "^4.0.2"
+  },
+  "devDependencies": {
+    "clean-jsdoc-theme": "^4.2.7"
+  }
+}
