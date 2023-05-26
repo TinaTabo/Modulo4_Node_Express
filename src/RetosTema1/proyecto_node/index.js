@@ -1,4 +1,8 @@
 /**
+ * @module RetosTema1-RetoOpcional
+ */
+
+/**
  * Importar las funciones readConsole y writeAndRead creadas en el proyecto
  */
 const writeAndRead = require('./writeAndReadObject');
