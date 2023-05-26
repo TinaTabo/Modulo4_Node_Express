@@ -1,5 +1,5 @@
 /**
- * @module RetosTema1
+ * @module RetosTema1-Reto1
  */
 /**
  * Programa que muestra por consola mensajes pasado un intervalo de tiempo.

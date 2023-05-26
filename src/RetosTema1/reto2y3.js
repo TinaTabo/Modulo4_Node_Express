@@ -1,5 +1,5 @@
 /**
- * @module RetosTema1
+ * @module RetosTema1-Reto2y3
  */
 /**
  * Paquete de node fs, para utilizar los métodos para escritura y lectura de ficheros,
