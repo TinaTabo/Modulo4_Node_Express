@@ -1,4 +1,7 @@
 /**
+ * @module RetosTema1
+ */
+/**
  * Programa que muestra por consola mensajes pasado un intervalo de tiempo.
  */
 console.log('Mensaje 1');
