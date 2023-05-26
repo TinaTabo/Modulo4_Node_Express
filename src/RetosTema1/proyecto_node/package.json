@@ -1,0 +1,12 @@
+{
+  "name": "proyecto_node",
+  "version": "1.0.0",
+  "description": "Reto opcional Tema 1 Modulo 4 - Node y Express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "jsdoc -c jsdoc.json"
+  },
+  "author": "Cristina Taboada Mayo",
+  "license": "ISC"
+}

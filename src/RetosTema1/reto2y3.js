@@ -6,7 +6,6 @@
  * Paquete de node fs, para utilizar los métodos para escritura y lectura de ficheros,
  * writeFile y readFile.
  */
-const { log } = require('console');
 const fs = require('fs');
 /**
  * Paquete node readline, para obtener los datos por consola.
@@ -35,6 +34,7 @@ let user = {
     surname: '',
     age: 0
 }
+module.exports = {user};
 
 
 /**
