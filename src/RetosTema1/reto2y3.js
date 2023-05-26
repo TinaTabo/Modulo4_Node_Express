@@ -1,11 +1,21 @@
 /**
  * @module RetosTema1-Reto2y3
  */
+
 /**
  * Paquete de node fs, para utilizar los métodos para escritura y lectura de ficheros,
  * writeFile y readFile.
  */
+const { log } = require('console');
 const fs = require('fs');
+/**
+ * Paquete node readline, para obtener los datos por consola.
+ */
+const readline = require('readline');
+/**
+ * Para utilizar el paquete readline es necesario utilizar el metodo createInterface.
+ */
+const rl = readline.createInterface(process.stdin, process.stdout);
 
 /**
  * Definicion de tipado de objeto literal
@@ -17,33 +27,51 @@ const fs = require('fs');
 
 
 /**
- * Variable con los datos del usuario
+ * Variable donde se guardarán los datos del usuario.
  * @type {user}
  */
 let user = {
-    name: 'Cris',
-    surname: 'Taboada',
-    age: 25
+    name: '',
+    surname: '',
+    age: 0
 }
 
+
 /**
- * Crear un archivo json que contenga al objeto user.
+ * Obtener datos por consola para crear el objeto user.
  */
-fs.writeFile('./reto2.json', JSON.stringify(user), (error) => {
-    if (error){
-        console.log(error);
-    }else{
-        console.log('Archivo creado correctamente');
-        /**
-         * Leer datos de un archivo json y mostrarlos por pantalla.
-         */
-        fs.readFile('./reto2.json',(error,data) => {
-            if (error){
-                console.log(error);
-            }else{
-                console.log(data.toString());
-                console.log('Lectura correcta de fichero');
-            }
-        })
-    }
-})
+rl.question('¿Cuál es tu nombre? ', (answer) => {
+    user.name = answer;
+    rl.question('¿y tu apellido? ', (answer) => {
+        user.surname = answer;
+        rl.question('¿Cuántos años tienes?(número) ', (answer) => {
+            user.age = answer;
+            /**
+             * Crear un archivo json que contenga al objeto user.
+             */
+            fs.writeFile('./userRegister.json', JSON.stringify(user), (error) => {
+                if (error){
+                    console.log(error);
+                }else{
+                    console.log('------------------------------');
+                    console.log('Archivo creado correctamente');
+                    console.log('------------------------------');
+                    /**
+                     * Leer datos de un archivo json y mostrarlos por pantalla.
+                     */
+                    fs.readFile('./userRegister.json',(error,data) => {
+                        if (error){
+                            console.log(error);
+                        }else{
+                            console.log(data.toString());
+                            console.log('------------------------------');
+                            console.log('Lectura correcta de fichero');
+                            console.log('------------------------------');
+                            rl.close();
+                        }
+                    })
+                }
+            });
+        });
+    });
+});
