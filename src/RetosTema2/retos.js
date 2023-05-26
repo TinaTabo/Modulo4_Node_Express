@@ -8,32 +8,18 @@
 const fs = require('fs/promises');
 
 /**
- * Para estos retos es necesario importar el paquete node readline.
+ * Para estos retos es necesario importar el paquete node readline/promises.
  */
-const readline = require('readline');
+const readline = require('readline/promises');
 /**
- * El paquete node readline no tiene ninguna opción para devolver promesas. Para
- * ello utilizamos la siguiente función a la que se le pasa como parámetro la pregunta
- * que se le quiere hacer al usuario y se obtendrá una promesa con los datos introducidos
- * por el usuario.
- * @param {string} pregunta - Pregunta para el usuario. En este caso para completar los campos
- * del objeto user necesitamos preguntar: ¿Cómo te llamas?, ¿Cúal es tu primer apellido? y
- * ¿Cuántos años tienes?
- * @returns {Promises}
+ * Para utilizar este paquete para obtener los datos del usuario por linea de comandos
+ * es necesario utilizar el método createInterface.
  */
-function pregunta(pregunta){
-    const question = new Promise((resolve,reject) => {
-        const rl = readline.createInterface({
-            input: process.stdin,
-            output: process.stdout
-        });
-        rl.question(pregunta, (respuesta) => {
-            resolve(respuesta);
-            rl.close();
-        });
-    });
-    return question;
-}
+const rlp = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+    terminal: true
+})
 
 /**
  * Definición del objeto literal user
@@ -55,14 +41,14 @@ let user = {
  * crea correctamente, a continuacion se lee, y se muestra por consola los datos obtenidos del
  * fichero al usuario.
  */
-pregunta('¿Cómo te llamas? ')
+rlp.question('¿Cómo te llamas? ')
     .then(respuesta => {
         user.name = respuesta;
-        return pregunta('¿Cuál es tu primer apellido? ')
+        return rlp.question('¿Cuál es tu primer apellido? ')
     })
     .then(respuesta => {
         user.surname = respuesta;
-        return pregunta('¿Cuántos años tienes?(Número) ')
+        return rlp.question('¿Cuántos años tienes?(Número) ')
     })
     .then(respuesta => {
         user.age =  Number(respuesta);
@@ -79,6 +65,7 @@ pregunta('¿Cómo te llamas? ')
         console.log(datosLectura.toString());
         console.log('Lectura correcta de fichero');
         console.log('-------------------------------');
+        rlp.close();
     })
     .catch(error => {
         console.log(error);
