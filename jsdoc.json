@@ -1,7 +1,7 @@
 {
     "plugins": [],
     "source": {
-        "include": ["src"],
+        "include": ["./src"],
         "includePattern": ".js$",
         "excludePattern": "(node_modules|docs)"
     },
@@ -13,6 +13,7 @@
         "destination": "./docs",
         "recurse": "true",
         "template": "node_modules/clean-jsdoc-theme",
-        "readme": "./README.md"
+        "readme": "./README.md",
+        "mergeModules": true
     }
 }
