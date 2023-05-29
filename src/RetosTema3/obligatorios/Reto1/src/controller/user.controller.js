@@ -25,3 +25,6 @@ const deleteUser = (req,res)=>{
     res.send(respuesta)
 
 }
+
+
+module.exports = {postUser, getUser, putUser, deleteUser};
