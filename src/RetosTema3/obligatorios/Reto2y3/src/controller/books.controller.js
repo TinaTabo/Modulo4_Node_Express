@@ -2,8 +2,8 @@
 const Book = require('../models/book');
 
 //-- Base de datos hardcoded de libros
-//let libro = new Book('Viuda de Hierro','Tapa blanda','Xiran Jay Zhao',18.05,'https://imagessl4.casadellibro.com/a/l/t7/04/9788427224704.jpg',982305,1234);
-let book = null;
+let book = new Book('Viuda de Hierro','Tapa blanda','Xiran Jay Zhao',18.05,'https://imagessl4.casadellibro.com/a/l/t7/04/9788427224704.jpg',982305,1234);
+//let book = null;
 
 //-- Funciones del servidor
 
@@ -19,22 +19,51 @@ const getBook = (req,res)=>{
 }
 
 //-- Crear un nuevo objeto libro
+//-- RETO 2: para las pruebas se envía en el body de la solicitud POST lo siguiente:
+/*
+{
+    "title": "Cuando los Árboles Cantan",
+    "type": "Tapa blanda",
+    "author": "Laura Gallego",
+    "price": 12.95,
+    "photo": "https://imagessl0.casadellibro.com/a/l/t7/30/9788467550030.jpg",
+    "id_book": 629108,
+    "id_user": 5678
+}
+*/
 const postBook = (req,res)=>{
     if (book == null) {
-        book = new Book('Ready Player One','Tapa blanda','Ernest Cline',15.00,'https://imagessl9.casadellibro.com/a/l/t7/79/9788466649179.jpg',743219,2345)
+        book = new Book(req.body.title,req.body.type,req.body.author,req.body.price,req.body.photo,req.body.id_book,req.body.id_user);
     }
     let answer = book;
     res.send(answer);
 }
 
-//-- Modifica los datos del libro
+//-- Modifica los datos del libro enviados por el body de la solicitud PUT.
 const putBook = (req,res)=>{
     let answer;
     if (book != null) {
-        book.type = 'Tapa dura';
-        book.author += ' Cris esta modificando este libro ;P'
-        book.price = 50;
-        answer = "Libro modificado correctamente";
+        if (req.body.title != undefined) {
+            book.title = req.body.title;
+        }
+        if (req.body.type != undefined) {
+            book.type = req.body.type;
+        }
+        if (req.body.author != undefined) {
+            book.author = req.body.author;
+        }
+        if (req.body.price != undefined) {
+            book.price = req.body.price;
+        }
+        if (req.body.photo != undefined) {
+            book.photo = req.body.photo;
+        }
+        if (req.body.id_book != undefined) {
+            book.id_book = req.body.id_book;
+        }
+        if (req.body.id_user != undefined) {
+            book.id_user = req.body.id_user;
+        }
     }else{
         answer = "No existe ningún libro"
     }
