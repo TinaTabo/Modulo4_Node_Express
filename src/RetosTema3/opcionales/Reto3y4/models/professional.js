@@ -15,8 +15,9 @@ class Professional{
      * @param {Number} oscarsNumber - Número de premios Oscar que ha ganado el profesional
      * @param {String} profession - Profesión del profesional (Actor/Actriz, Director/a, Guionista, Productor)
      * @param {String} photo - URL de la foto de perfil del profesional
+     * @param {Number} id - Número de identificación del profesional
      */
-    constructor(name,age,weight,height,isRetired,nationality,oscarsNumber,profession,photo){
+    constructor(name,age,weight,height,isRetired,nationality,oscarsNumber,profession,photo,id){
         this.name = name;
         this.age = age;
         this.weight = weight;
@@ -26,6 +27,7 @@ class Professional{
         this.oscarsNumber = oscarsNumber;
         this.profession = profession;
         this.photo = photo;
+        this.id = id;
     }
 }
 
