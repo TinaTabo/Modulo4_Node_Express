@@ -96,7 +96,7 @@ const putBook = (req,res)=>{
 
 //-- Elimina un libro
 const delBook = (req,res)=>{
-    let answer;
+    let answer = false;
     let i = 0;
     while (req.body.id_book != books[i].id_book && i < books.length) {
         i++;
@@ -104,7 +104,7 @@ const delBook = (req,res)=>{
 
     if (req.body.id_book == books[i].id_book) {
         books.splice(i,1);
-        answer = "Libro eliminado correctamente";
+        answer = true;
     }
     res.send(answer);
 }
