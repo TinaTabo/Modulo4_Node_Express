@@ -27,13 +27,13 @@ const getBook = (req,res)=>{
             if (req.query.id == books[i].id_book) {
                 answer = books[i];
             }else{
-                answer = "No existe ningún libro con la id solicitada"
+                answer = {error: false, msg: "No existe ningún libro con la id solicitada", code: 200};
             }
         }else{
             answer = books;
         }
     }else{
-        answer = "No existe ningún libro";
+        answer = {error: false, msg: "No existe ningún libro", code: 200};
     }
     res.send(answer);
 }
@@ -54,7 +54,7 @@ const getBook = (req,res)=>{
 const postBook = (req,res)=>{
     let book = new Book(req.body.title,req.body.type,req.body.author,req.body.price,req.body.photo,req.body.id_book,req.body.id_user);
     books.push(book)
-    let answer = "Libro añadido correctamente";
+    let answer = {error: false, msg: "Libro añadido correctamente", code: 200};
     res.send(answer);
 }
 
@@ -88,7 +88,7 @@ const putBook = (req,res)=>{
         if (req.body.id_user != undefined) {
             books[i].id_user = req.body.id_user;
         }
-        answer = "Libro modificado correctamente"
+        answer = {error: false, msg: "Libro modificado correctamente", code: 200};
     }
 
     res.send(answer);
