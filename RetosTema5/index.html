@@ -12,38 +12,29 @@
     <header>
         <img src="./img/logo.png" alt="Logo Pokemon" class="logo">
     </header>
+
     <main>
         <div class="form">
             <h1 class="form_title">¡Encuentra tu Pokemon!</h1>
-            <input type="text" name="" id="pokemon_name" placeholder="Introduce el nombre un Pokemon" class="form_input">
-            <button class="form_button">BUSCAR</button>
+            <input type="text" id="pokemon_name" placeholder="Introduce el nombre un Pokemon" class="form_input">
+            <button class="form_button" onclick="searchPokemon()" type="reset">BUSCAR</button>
         </div>
         <div class="card">
-            <h1 class="card_title">Nombre Pokemon</h1>
-            <img src="./img/pokeball.png" style="width: 100px; height: 100px;" alt="Foto del pokemon" class="card_img">
-            <table class="table">
-                <thead>
-                    <tr>
+            <h1 class="card_title" id="card_title">Pokemon</h1>
+            <img src="./img/pokeball.png" style="width: 200px; height: 200px;" alt="Foto del pokemon" class="card_img" id="card_img">
+            <table class="table" id="table">
+                    <!-- <tr>
                         <th>Habilidades</th>
-                        <th>Last</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>1</th>
-                        <td>Mark</td>
-                    </tr>
-                    <tr>
-                        <th>2</th>
-                        <td>Jacob</td>
-                    </tr>
-                    <tr>
-                        <th>3</th>
-                        <td>Larry</td>
-                    </tr>
-                </tbody>
+                    </tr> -->
             </table>
+            <div class="msg_error" id="msg_error"></div>
         </div>
     </main>
+
+    <footer>
+        <p>© Cristina Taboada Mayo - 2023 | All rights reserved</p>
+    </footer>
+
+    <script src="index.js"></script>
 </body>
 </html>
